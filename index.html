@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Experiment jsPsych</title>
+
+  <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet">
+  <script src="https://unpkg.com/jspsych@8.0.2"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.6.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-call-function@2.0.0"></script>
+  <script src="https://unpkg.com/@jspsych/plugin-survey-html-form@2.0.0"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+  /* ── General Layout ── */
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+  }
+  .jspsych-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+  }
+  .jspsych-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  .jspsych-html-keyboard-response-stimulus,
+  .jspsych-html-button-response-stimulus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .jspsych-btn {
+    margin: 0 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  body.vaast-background {
+    background-color: black !important;
+    overflow: hidden;
+  }
+  body.vaast-background::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1200px;
+    height: 675px;
+    transform: translate(-50%, -50%);
+    background-image: url('Background/startBackgr.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+  }
+
+  body.vaast-background .jspsych-content-wrapper,
+  body.vaast-container .jspsych-content-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+    z-index: 1;
+  }
+  body.vaast-background .jspsych-content,
+  body.vaast-container .jspsych-content {
+    max-width: none !important;
+    width: 1200px !important;
+    height: 675px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    max-height: none !important;
+    background: transparent;
+  }
+
+  /* ── Rating layout ── */
+  body.rating-container .jspsych-content-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body.rating-container .jspsych-content {
+    width: 1200px !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  </style>
+</head>
+<body>
+  <div id="jspsych-target"></div>
+  <script src="script.js"></script>
+</body>
+</html>
