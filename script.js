@@ -723,7 +723,7 @@ const filename = `${subject_id}.csv`;
 const save_data = {
   type: jsPsychPipe,
   action: "save",
-  experiment_id: "o1l1b16kLcha", // see DataPipe 
+  experiment_id: "z3EXbmOc4TxL", // see DataPipe 
   filename: filename,
   data_string: () => jsPsych.data.get().csv()  
 };
@@ -737,7 +737,7 @@ const prolific = {
   trial_duration: 3000,
   choices: "NO_KEYS",
   on_finish: function(){
-    window.location.href = "https://app.prolific.com/submissions/complete?cc=C1JNJBZV";
+    window.location.href = "https://app.prolific.com/submissions/complete?cc=C13A97HN";
   }
 };
 
@@ -808,7 +808,7 @@ jsPsych.run([
   bot_check_2,
   comments,
   debriefing,
-  //save_data,
-  //prolific,
-  save_local,
+  save_data,
+  prolific,
+  //save_local,
 ]);
