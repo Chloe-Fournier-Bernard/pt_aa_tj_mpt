@@ -56,8 +56,8 @@ for (let i = 0; i < N_PER_CELL; i++) {
   all_items.push({ id: `FB${i+1}`, truth: 'false', color: 'blue', idx: false_indices[N_PER_CELL + i], file: `Trivia Statements/Falsestatement${false_indices[N_PER_CELL + i]}.jpg` });
 }
 const condition = jsPsych.randomization.sampleWithoutReplacement(['approach_yellow', 'approach_blue'], 1)[0];
-const APPROACH_KEY = 'r';
-const AVOID_KEY    = 'v';
+const APPROACH_KEY = 'u';
+const AVOID_KEY    = 'b';
 function getCorrectResponse(color) {
   if (condition === 'approach_yellow') {
     return color === 'yellow' ? APPROACH_KEY : AVOID_KEY;
@@ -146,7 +146,7 @@ function makeStartVaastBlock(items, block_number, block_condition) {
 // ------------------------------
 const welcome = {
   type: jsPsychHtmlButtonResponse,
-  stimulus: "<p>Welcome to the experiment. This study investigates people's assessment of statements. The study will take about 19 minutes to complete.</p>",
+  stimulus: "<p>Welcome to the experiment. This study investigates people's assessment of statements. The study will take about 12 minutes to complete.</p>",
   choices: ["Continue"],
 };
 
@@ -159,7 +159,7 @@ const consent = {
     <p>We are researchers from the Université catholique de Louvain (Belgium) and Aix-Marseille Université (France). We are conducting a study to examine features related to people's judgment of statements.</p>
     <p><strong>About your participation</strong></p>
     <p>Participation in this experiment on this Prolific platform is completely voluntary. You are free to decline to participate and to refuse to answer any individual question. You have the right to withdraw at any time (by closing the window) without justification. Please note, however, that compensation is contingent upon fully completing the study. We ask you to complete this study conscientiously and in one go.</p>
-    <p>Participation in this study will involve completing a computer-based task involving actions about experimental stimuli, followed by a short survey. Specifically, you will be presented with sentences, which you will be requested to physically approach (by zooming in into the sentence) or to physically avoid (by zooming away from the sentence). These approach-avoidance movements will be implemented by using keys on your keyboard. Your involvement will require about 16-18 minutes. You will receive £2.23 GBP in exchange for your participation. To participate, you need to use a computer.</p>
+    <p>Participation in this study will involve completing a computer-based task involving actions about experimental stimuli, followed by a short survey. Specifically, you will be presented with sentences, which you will be requested to physically approach (by zooming in into the sentence) or to physically avoid (by zooming away from the sentence). These approach-avoidance movements will be implemented by using keys on your keyboard. Your involvement will require about 12 minutes. You will receive £2.23 GBP in exchange for your participation. To participate, you need to use a computer.</p>
     <p><strong>Risks and benefits</strong></p>
     <p>There are no known or anticipated risks to you for participating. Although this study will not benefit you personally, we hope that our results will add to the knowledge about psychology.</p>
     <p><strong>Data and confidentiality</strong></p>
@@ -212,9 +212,9 @@ const instructions_keys = {
     <div style="max-width:800px; margin:auto; text-align:center;">
       <p>A series of trivia statements will appear in this environment, and your task will be to move forward or backward depending on these statements (more specific instructions will follow).</p>
       <p>You will use the following keys:</p>
-      <p><strong>R</strong> = MOVE FORWARD</p>
+      <p><strong>U</strong> = MOVE FORWARD</p>
       <p><strong>Space bar</strong> = START key</p>
-      <p><strong>V</strong> = MOVE BACKWARD</p>
+      <p><strong>B</strong> = MOVE BACKWARD</p>
       <p style="margin-top:20px;">Press the 'Next' button to continue.</p>
     </div>
   `,
@@ -226,7 +226,7 @@ const instructions_osymbol = {
     <div style="max-width:800px; margin:auto; text-align:center;">
       <p>At the beginning of each trial, you will see the symbol <strong>O</strong>. This symbol indicates that you have to press the START key (the <strong>Space bar</strong>) to begin the trial.</p>
       <p>Then, a fixation cross (<strong>+</strong>) will appear in the center of the screen followed by a trivia statement.</p>
-      <p>Your task is to move forward or backward by pressing the MOVE FORWARD key (<strong>R</strong>) or the MOVE BACKWARD key (<strong>V</strong>).</p>
+      <p>Your task is to move forward or backward by pressing the MOVE FORWARD key (<strong>U</strong>) or the MOVE BACKWARD key (<strong>B</strong>).</p>
       <p style="margin-top:20px;">Press the 'Next' button to continue.</p>
     </div>
   `,
@@ -238,11 +238,11 @@ const instructions_approachyellow = {
     <div style="max-width:800px; margin:auto; text-align:center;">
       </h3>Instructions for this task</h3>
       <p>You have to:</p>
-      <p>Approach (move forward) the <span style="background-color: #E3E216;">trivia statements framed in yellow</span> by pressing the <strong>R</strong> key, e.g.:</p>
+      <p>Approach (move forward) the <span style="background-color: #E3E216;">trivia statements framed in yellow</span> by pressing the <strong>U</strong> key, e.g.:</p>
       <img src="Background/Yellow.jpg" 
           style="width:610px; height:130px; margin-top:20px; border:1px solid #ccc;">
       <p style="margin-top:20px;"><strong>and</strong></p>
-      <p>Avoid (move backward) the <span style="background-color: #1981E4; color: white;">trivia statements framed in blue</span> by pressing the <strong>V</strong> key, e.g.:</p>
+      <p>Avoid (move backward) the <span style="background-color: #1981E4; color: white;">trivia statements framed in blue</span> by pressing the <strong>B</strong> key, e.g.:</p>
       <img src="Background/Blue.jpg" 
           style="width:610px; height:130px; margin-top:20px; border:1px solid #ccc;">
       <p style="margin-top:20px;">WARNING: Errors will be displayed with a red <span style="color:red; font-weight:bold;">ERROR</span> message.</p>
@@ -257,11 +257,11 @@ const instructions_approachblue = {
     <div style="max-width:800px; margin:auto; text-align:center;">
       </h3>Instructions for this task</h3>
       <p>You have to:</p>
-      <p>Approach (move forward) the <span style="background-color: #1981E4; color: white;">trivia statements framed in blue</span> by pressing the <strong>R</strong> key, e.g.:</p>
+      <p>Approach (move forward) the <span style="background-color: #1981E4; color: white;">trivia statements framed in blue</span> by pressing the <strong>U</strong> key, e.g.:</p>
       <img src="Background/Blue.jpg" 
            style="width:610px; height:130px; margin-top:10px; border:1px solid #ccc;">
       <p style="margin-top:20px;"><strong>and</strong></p>
-      <p>Avoid (move backward) the <span style="background-color: #E3E216;">trivia statements framed in yellow</span> by pressing the <strong>V</strong> key, e.g.:</p>
+      <p>Avoid (move backward) the <span style="background-color: #E3E216;">trivia statements framed in yellow</span> by pressing the <strong>B</strong> key, e.g.:</p>
       <img src="Background/Yellow.jpg" 
            style="width:610px; height:130px; margin-top:10px; border:1px solid #ccc;">
       <p style="margin-top:20px;">WARNING: Errors will be displayed with a red <span style="color:red; font-weight:bold;">ERROR</span> message.</p>
@@ -587,8 +587,8 @@ function makeInstructionCheck(block_condition) {
       });
       setTimeout(() => {
         buttons.forEach(btn => {
-          btn.style.display = 'inline-block';
-          btn.style.margin = '20px';
+          btn.style.display = 'block';
+          btn.style.margin = '20px auto';
           btn.style.padding = '15px';
           btn.style.border = '2px solid #ccc';
           btn.style.borderRadius = '10px';
@@ -596,6 +596,12 @@ function makeInstructionCheck(block_condition) {
           btn.onmouseover = () => btn.style.backgroundColor = '#eaeaea';
           btn.onmouseout = () => btn.style.backgroundColor = '#f9f9f9';
         });
+        const btnGroup = buttons[0] ? buttons[0].parentElement : null;
+        if (btnGroup) {
+          btnGroup.style.display = 'flex';
+          btnGroup.style.flexDirection = 'column';
+          btnGroup.style.alignItems = 'center';
+        }
       }, 3000);
     },
     data: {
@@ -777,6 +783,7 @@ jsPsych.run([
   vaast_loop,
   deactivateVaastLayout,
   deactivateVaastBackground,
+  makeInstructionCheck(first_block),
 
   between_blocks_screen,
 
