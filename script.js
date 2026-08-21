@@ -7,8 +7,8 @@ const image_files = [
   'Background/avBackgr.jpg',
   'Background/prefixation.jpg',
   'Background/fixation.jpg',
-  'Background/Bluebackground.jpg',
-  'Background/Yellowbackground.jpg',
+  'Background/BlueBackground.jpg',
+  'Background/YellowBackground.jpg',
   'Background/Yellow.jpg',
   'Background/Blue.jpg',
 
@@ -338,8 +338,8 @@ const vaast_stimulus = {
   stimulus: () => {
     const stim = trials_stim[vaast_index];
     const bg = stim.color === 'yellow'
-      ? 'Background/Yellowbackground.jpg'
-      : 'Background/Bluebackground.jpg';
+      ? 'Background/YellowBackground.jpg'
+      : 'Background/BlueBackground.jpg';
     return `
       <div style="position:relative; width:1200px; height:675px; margin:auto;">
         <img src="Background/startBackgr.jpg"
@@ -386,8 +386,8 @@ const vaast_feedback = {
       `;
     }
     const bg = last.color === 'yellow'
-      ? 'Background/Yellowbackground.jpg'
-      : 'Background/Bluebackground.jpg';
+      ? 'Background/YellowBackground.jpg'
+      : 'Background/BlueBackground.jpg';
     const fb = (
       (condition === 'approach_yellow' && last.color === 'yellow') ||
       (condition === 'approach_blue'   && last.color === 'blue')
