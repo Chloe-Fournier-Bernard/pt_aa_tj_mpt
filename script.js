@@ -192,6 +192,7 @@ const enter_fullscreen = {
   type: jsPsychFullscreen,
   fullscreen_mode: true
 };
+
 const videogameliketask = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -206,6 +207,7 @@ const videogameliketask = {
   `,
   choices: ["Next"]
 };
+
 const instructions_keys = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -220,6 +222,7 @@ const instructions_keys = {
   `,
   choices: ["Next"],
 };
+
 const instructions_osymbol = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -232,6 +235,7 @@ const instructions_osymbol = {
   `,
   choices: ["Next"],
 };
+
 const instructions_approachyellow = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -251,6 +255,7 @@ const instructions_approachyellow = {
   `,
   choices: ["Next"]
 };
+
 const instructions_approachblue = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -271,6 +276,16 @@ const instructions_approachblue = {
   choices: ["Next"]
 };
 
+function makeBlockWarning(block_number) {
+  return {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+    <p>Before you continue, please note that the instructions on the next screen must be read <strong>very carefully</strong>.</p>
+    <p>At the end of this ${block_number === 1 ? "first" : "second"} phase, you will be asked a question about these instructions. Please make sure you understand, follow, and remember these instructions.</p>
+    <p>Press the ‘Next’ button to continue.</p>`,
+    choices: ["Next"],
+  };
+}
 
 const standard_conditioning_instructions = {
   type: jsPsychHtmlButtonResponse,
@@ -323,6 +338,7 @@ const vaast_prefix = {
   `,
   choices: [' ']
 };
+
 const vaast_fixation = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: `
@@ -333,6 +349,7 @@ const vaast_fixation = {
   choices: "NO_KEYS",
   trial_duration: 1000
 };
+
 const vaast_stimulus = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: () => {
@@ -367,6 +384,7 @@ const vaast_stimulus = {
     data.file = stim.file;
   }
 };
+
 const vaast_feedback = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: () => {
@@ -430,14 +448,17 @@ const activateVaastBackground = {
   type: jsPsychCallFunction,
   func: () => document.body.classList.add('vaast-background')
 };
+
 const deactivateVaastBackground = {
   type: jsPsychCallFunction,
   func: () => document.body.classList.remove('vaast-background')
 };
+
 const activateVaastLayout = {
   type: jsPsychCallFunction,
   func: () => document.body.classList.add('vaast-container')
 };
+
 const deactivateVaastLayout = {
   type: jsPsychCallFunction,
   func: () => document.body.classList.remove('vaast-container')
@@ -499,6 +520,7 @@ const activateRatingStyle = {
   type: jsPsychCallFunction,
   func: () => document.body.classList.add('rating-container')
 };
+
 const deactivateRatingStyle = {
   type: jsPsychCallFunction,
   func: () => document.body.classList.remove('rating-container')
@@ -723,7 +745,7 @@ const filename = `${subject_id}.csv`;
 const save_data = {
   type: jsPsychPipe,
   action: "save",
-  experiment_id: "z3EXbmOc4TxL", // see DataPipe 
+  experiment_id: "UGc0Azdl0IsO", // see DataPipe 
   filename: filename,
   data_string: () => jsPsych.data.get().csv()  
 };
@@ -775,7 +797,8 @@ jsPsych.run([
   instructions_osymbol,
   (condition === "approach_yellow" ? instructions_approachyellow : instructions_approachblue),
 
-  // Block 1 (conditioning): explicit rule -> repeated VAAST exposure -> manipulation check
+  // Block 1
+  makeBlockWarning(1),
   first_block_instructions,
   makeStartVaastBlock(block1_items, 1, first_block),
   activateVaastBackground,
@@ -787,7 +810,8 @@ jsPsych.run([
 
   between_blocks_screen,
 
-  // Block 2 (conditioning): the other explicit rule, on the other 8 items
+  // Block 2
+  makeBlockWarning(2),
   second_block_instructions,
   makeStartVaastBlock(block2_items, 2, second_block),
   activateVaastBackground,
